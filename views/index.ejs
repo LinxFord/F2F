@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta
+      name="description"
+      content="An app for creating P2P video chat rooms"
+    />
+    <meta property="og:title" content="P2P Video Chat Application" />
+    <meta
+      property="og:image"
+      content="https://storage.googleapis.com/replit/images/1632854158691_7c8ea1d326b313663854069f246051fa.png"
+    />
+    <meta
+      property="og:url"
+      content="https://P2P-Video-Chat-Application.lchap701.repl.co"
+    />
+    <meta property="og:site_name" content="Replit" />
+    <meta
+      property="og:description"
+      content="A project that was created for freeCodeCamp and acts as a P2P video chat app."
+    />
+    <link
+      rel="apple-touch-icon"
+      sizes="180x180"
+      href="/favicon.io/apple-touch-icon.png"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="32x32"
+      href="/favicon.io/favicon-32x32.png"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="16x16"
+      href="/favicon.io/favicon-16x16.png"
+    />
+    <link rel="manifest" href="/favicon.io/site.webmanifest" />
+    <title>P2P Video Chat Application</title>
+    <script
+      src="https://kit.fontawesome.com/855ee508c4.js"
+      crossorigin="anonymous"
+    ></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="/css/styles.min.css" type="text/css" />
+  </head>
+  <body>
+    <header>
+      <h1>P2P Video Chat Room</h1>
+    </header>
+
+    <main id="flex">
+      <section id="video-container">
+        <h2>
+          <% if (room.trim().length > 0) { %>
+          <i class="far fa-comment fa-flip-horizontal"></i> <%= room.trim() %>
+          <% } %>
+        </h2>
+
+        <!-- Loads videos via JS script -->
+        <div id="videos">
+          <video id="localVideo" playsinline autoplay muted></video>
+          <video
+            id="remoteVideo"
+            playsinline
+            autoplay
+            style="display: none"
+          ></video>
+        </div>
+
+        <div id="options">
+          <button id="video"><i class="fas fa-video fa-lg"></i></button>
+          <button id="audio"><i class="fas fa-microphone fa-lg"></i></button>
+          <button id="chat">
+            <i class="fas fa-comment fa-lg"></i>
+          </button>
+          <button id="invite"><i class="fas fa-user-plus fa-lg"></i></button>
+        </div>
+      </section>
+
+      <section id="message-container">
+        <!-- Adds messages via JS script -->
+        <div id="messages">
+          <div id="back-container">
+            <button id="back"><i class="fas fa-angle-left fa-lg"></i></button>
+          </div>
+        </div>
+
+        <div id="message-control">
+          <input
+            type="text"
+            name="message"
+            autocomplete="off"
+            placeholder="Type your message here..."
+          />
+          <button id="send"><i class="fas fa-plus fa-lg"></i></button>
+        </div>
+      </section>
+    </main>
+    <script>
+      const ROOM = "<%= room %>";
+    </script>
+    <script src="/socket.io/socket.io.js"></script>
+    <script src="/js/script.min.js"></script>
+  </body>
+</html>
